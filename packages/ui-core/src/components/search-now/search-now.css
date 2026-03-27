@@ -1,0 +1,50 @@
+:host {
+  display: block;
+  font-family: Arial, sans-serif;
+}
+
+.search-now-wrapper {
+  max-width: 700px;
+  margin: 24px auto;
+  padding: 16px;
+}
+
+.search-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.search-bar button {
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.results-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.result-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.category {
+  font-size: 12px;
+  font-weight: bold;
+  color: #666;
+}
+
+.error {
+  color: red;
+}
