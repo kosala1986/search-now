@@ -1,7 +1,10 @@
-# Ignore generated Stencil components in react-wrapper
+
 packages/react-wrapper/src/components/stencil-generated/
 
-# Auto-generated Stencil files
+packages/angular-wrapper/src/directives/index.ts
+packages/angular-wrapper/src/directives/proxies.ts
+packages/angular-wrapper/src/directives/angular-component-lib/
+
 **/components.d.ts
 src/index.html
 

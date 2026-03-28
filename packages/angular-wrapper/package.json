@@ -1,0 +1,19 @@
+{
+    "name": "@search-now/angular-wrapper",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "./src/index.ts",
+    "module": "./src/index.ts",
+    "types": "./src/index.ts",
+    "exports": {
+        ".": "./src/index.ts"
+    },
+    "peerDependencies": {
+        "@angular/common": ">=19 <22",
+        "@angular/core": ">=19 <22",
+        "rxjs": "^7.8.0"
+    },
+    "dependencies": {
+        "@search-now/ui-core": "0.0.1"
+    }
+}
