@@ -16,6 +16,7 @@ search-now-workspace/
 │   ├── react-wrapper/        # Auto-generated React bindings
 │   └── angular-wrapper/      # Angular wrapper
 ├── apps/
-│   └── demo-react/           # React demo application
+│   ├── demo-react/           # React demo application
+│   └── demo-angular/         # Angular demo application
 └── mock/                     # Mock API server
 ```
