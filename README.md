@@ -21,6 +21,8 @@ A monorepo project featuring web components built with Stencil, along with React
    npm run build
    ```
 
+   Important: whenever you make changes in `packages/ui-core` web components, run this build step again before testing in `demo-react` or `demo-angular`.
+
 3. Start the mock server (from the root folder):
    ```bash
    npm run mock:server
@@ -28,12 +30,19 @@ A monorepo project featuring web components built with Stencil, along with React
 
    This starts a JSON server on http://localhost:3001/ with sample data.
 
-4. Start the demo app (from the root folder):
+4. Start the demo react app (from the root folder):
    ```bash
    npm run dev --workspace=demo-react
    ```
 
    The react app will be available at http://localhost:5173/
+
+5. Start the demo Angular app (from the root folder):
+   ```bash
+   npm run start --workspace=demo-angular
+   ```
+
+   The Angular app will be available at http://localhost:4200/
 
 ## Development
 
@@ -75,5 +84,27 @@ function App() {
 Import and use the web components through the Angular wrapper:
 
 ```typescript
-// Angular wrapper implementation
+import { HelloWorld } from '../../../../packages/angular-wrapper/src/directives/proxies';
+
+@Component({
+  selector: 'app-root',
+  imports: [HelloWorld],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  templateUrl: './app.html',
+  styleUrl: './app.scss'
+})
+export class App {
+  onButtonClicked(event: CustomEvent<string>) {
+    console.log('Angular received:', event.detail);
+  }
+}
+```
+
+```html
+<div>
+  <hello-world
+    message="Hello from Angular"
+    (buttonClicked)="onButtonClicked($event)"
+  ></hello-world>
+</div>
 ```
