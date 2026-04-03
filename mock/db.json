@@ -1,28 +1,16 @@
 {
-  "results": [
+  "customers": [
     {
-      "id": 1,
-      "title": "Savings Account",
-      "category": "Accounts",
-      "description": "Basic savings account for personal banking"
+      "customerId": "C001",
+      "fullName": "John Tan",
+      "cif": "CIF10001",
+      "email": "john.tan@email.com"
     },
     {
-      "id": 2,
-      "title": "Credit Card Platinum",
-      "category": "Cards",
-      "description": "Premium credit card with rewards"
-    },
-    {
-      "id": 3,
-      "title": "Home Loan",
-      "category": "Loans",
-      "description": "Flexible home financing solution"
-    },
-    {
-      "id": 4,
-      "title": "Fixed Deposit",
-      "category": "Investments",
-      "description": "Secure deposit with fixed interest"
+      "customerId": "C002",
+      "fullName": "Jane Lee",
+      "cif": "CIF10002",
+      "email": "jane.lee@email.com"
     }
   ]
 }

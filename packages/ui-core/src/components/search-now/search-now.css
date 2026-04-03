@@ -1,50 +1,94 @@
+@import './theme-tokens.css';
+
 :host {
   display: block;
   font-family: Arial, sans-serif;
 }
 
-.search-now-wrapper {
+.search-now {
   max-width: 700px;
-  margin: 24px auto;
-  padding: 16px;
 }
 
-.search-bar {
+.search-box {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   margin-bottom: 16px;
 }
 
-.search-bar input {
+.pre-condition, 
+.loading, 
+.error, 
+.no-results {
+  font-size: 12px;
+  font-style: italic;
+  padding-left: 6px;
+}
+
+input {
   flex: 1;
-  padding: 10px 12px;
+  padding: 12px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
   font-size: 14px;
 }
 
-.search-bar button {
-  padding: 10px 16px;
+button {
+  padding: 10px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: white;
   cursor: pointer;
 }
 
-.results-list {
+ul {
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 16px 0 0;
 }
 
-.result-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 12px;
+.result-item {
   margin-bottom: 12px;
 }
 
-.category {
-  font-size: 12px;
-  font-weight: bold;
-  color: #666;
+.result-button {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #ffffff;
+  text-align: left;
+  cursor: pointer;
 }
 
-.error {
-  color: red;
+.result-button:hover {
+  background: #f9fafb;
+  border-color: #cbd5e1;
+}
+
+.result-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.result-row:last-child {
+  margin-bottom: 0;
+}
+
+.result-label {
+  min-width: 90px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.result-value {
+  color: #111827;
+  word-break: break-word;
+}
+
+mark {
+  background: #fde68a;
+  padding: 0 2px;
+  border-radius: 2px;
 }

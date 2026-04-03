@@ -1,16 +1,32 @@
-import type { SearchResultItem } from '../types/search';
-import { CONFIG } from '../config';
+import type { SearchNowConfig, SearchNowResult } from '../types/search';
 
+export async function fetchSearchResults(
+  config: SearchNowConfig,
+  query: string
+): Promise<SearchNowResult[]> {
+  const method = config.api.method ?? 'GET';
 
-export const searchResults = async (query: string): Promise<SearchResultItem[]> => {
-  const baseUrl = CONFIG.api.endpoints.search;
-  const url = query ? `${baseUrl}?q=${query}` : baseUrl;
+  const url = new URL(config.api.searchUrl, window.location.origin);
 
-  const response = await fetch(url);
+  url.searchParams.set(`${config.mapping.titleField}:contains`, query);
+
+  const response = await fetch(url.toString(), { method });
 
   if (!response.ok) {
     throw new Error('Failed to fetch search results');
   }
 
-  return response.json();
-};
+  const data = await response.json();
+  const items = Array.isArray(data) ? data : [];
+
+  return items.map((item: Record<string, unknown>) => ({
+    id: String(item[config.mapping.idField] ?? ''),
+    title: String(item[config.mapping.titleField] ?? ''),
+    subtitle: config.mapping.subtitleField
+      ? String(item[config.mapping.subtitleField] ?? '')
+      : undefined,
+    description: config.mapping.descriptionField
+      ? String(item[config.mapping.descriptionField] ?? '')
+      : undefined,
+  }));
+}

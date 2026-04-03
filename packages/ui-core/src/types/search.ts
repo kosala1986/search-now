@@ -1,6 +1,48 @@
-export interface SearchResultItem {
-  id: number;
+export enum SearchContext {
+  Customers = 'customers',
+  Accounts = 'accounts',
+  Transactions = 'transactions',
+}
+
+export interface SearchFilterConfig {
+  id: string;
+  label: string;
+  value: string;
+  isDefault?: boolean;
+}
+
+export interface SearchResultMappingConfig {
+  idField: string;
+  titleField: string;
+  subtitleField?: string;
+  descriptionField?: string;
+}
+
+export interface SearchResultLabelsConfig {
+  titleLabel: string;
+  subtitleLabel?: string;
+  descriptionLabel?: string;
+}
+
+export interface SearchApiConfig {
+  searchUrl: string;
+  method?: 'GET' | 'POST';
+  queryParam?: string;
+}
+
+export interface SearchNowConfig {
+  context: SearchContext;
   title: string;
-  category: string;
-  description: string;
+  placeholder: string;
+  filters?: SearchFilterConfig[];
+  api: SearchApiConfig;
+  mapping: SearchResultMappingConfig;
+  labels: SearchResultLabelsConfig;
+}
+
+export interface SearchNowResult {
+  id: string;
+  title: string;
+  subtitle?: string;
+  description?: string;
 }
