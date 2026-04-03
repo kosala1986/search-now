@@ -1,5 +1,38 @@
 :host {
-  --sn-bg: #fff;
-  --sn-text: #111;
-  --sn-border: #d1d5db;
+  /* Colors */
+  --sn-color-bg: #ffffff;
+  --sn-color-surface: #ffffff;
+  --sn-color-surface-hover: #f9fafb;
+  --sn-color-text: #111827;
+  --sn-color-text-muted: #374151;
+  --sn-color-text-subtle: #6b7280;
+  --sn-color-border: #d1d5db;
+  --sn-color-border-soft: #e5e7eb;
+  --sn-color-border-hover: #cbd5e1;
+  --sn-color-highlight: #fde68a;
+  --sn-color-error: #b91c1c;
+
+  /* Typography */
+  --sn-font-family: Arial, sans-serif;
+  --sn-font-size-title: 20px;
+  --sn-font-size-body: 14px;
+  --sn-font-size-meta: 12px;
+  --sn-font-weight-semibold: 600;
+
+  /* Spacing */
+  --sn-space-1: 4px;
+  --sn-space-2: 6px;
+  --sn-space-3: 8px;
+  --sn-space-4: 10px;
+  --sn-space-5: 12px;
+  --sn-space-6: 14px;
+  --sn-space-7: 16px;
+
+  /* Radius */
+  --sn-radius-sm: 8px;
+  --sn-radius-md: 10px;
+  --sn-radius-lg: 12px;
+
+  --sn-max-width: 700px;
+  --sn-label-width: 90px;
 }

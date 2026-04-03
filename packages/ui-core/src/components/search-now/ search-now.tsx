@@ -17,8 +17,18 @@ export class SearchNow {
   @State() results: SearchNowResult[] = [];
   @State() loading = false;
   @State() error = '';
+  @State() selectedFilter = '';
+  @State() isDropdownOpen = false;
+  @State() activeIndex = -1;
+
+  private dropdownId = 'search-now-results';
 
   debounceTimer?: number;
+
+  componentWillLoad() {
+    const defaultFilter = this.config.filters?.find((filter) => filter.isDefault);
+    this.selectedFilter = defaultFilter?.value ?? '';
+  }
 
   private onChange = (event: Event) => {
     const input = event.target as HTMLInputElement;
@@ -28,6 +38,9 @@ export class SearchNow {
     clearTimeout(this.debounceTimer);
 
     const trimmedQuery = this.query.trim();
+
+    this.isDropdownOpen = true;
+    this.activeIndex = -1;
 
     if (trimmedQuery.length < MIN_QUERY_LENGTH) {
       this.results = [];
@@ -52,7 +65,11 @@ export class SearchNow {
         return;
       }
 
-      this.results = await fetchSearchResults(this.config, trimmedQuery);
+      this.results = await fetchSearchResults(
+        this.config,
+        trimmedQuery,
+        this.selectedFilter
+      );
     } catch (error) {
       this.results = [];
       this.error = 'Failed to load search results';
@@ -61,25 +78,63 @@ export class SearchNow {
     }
   }
 
+  private onFilterClick = async (filterValue: string) => {
+    this.selectedFilter = filterValue;
+
+    if (this.query.trim().length >= MIN_QUERY_LENGTH) {
+      this.loading = true;
+      await this.loadResults();
+    }
+  };
+
   private clearSearch = () => {
     this.query = '';
     this.results = [];
     this.error = '';
     this.loading = false;
+    this.isDropdownOpen = false;
+    this.activeIndex = -1;
   };
 
-  private highlightText(text?: string) {
-    if (!text) return text;
+  private onKeyDown = (event: KeyboardEvent) => {
+    if (!this.isDropdownOpen || this.results.length === 0) {
+      return;
+    }
 
-    const query = this.query.trim();
-    if (!query) return text;
+    switch (event.key) {
+      case 'ArrowDown':
+        event.preventDefault();
+        this.activeIndex =
+          this.activeIndex < this.results.length - 1 ? this.activeIndex + 1 : 0;
+        break;
 
-    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const parts = text.split(new RegExp(`(${escapedQuery})`, 'gi'));
+      case 'ArrowUp':
+        event.preventDefault();
+        this.activeIndex =
+          this.activeIndex > 0 ? this.activeIndex - 1 : this.results.length - 1;
+        break;
 
-    return parts.map((part) =>
-      part.toLowerCase() === query.toLowerCase() ? <mark>{part}</mark> : part
-    );
+      case 'Enter':
+        event.preventDefault();
+        if (this.activeIndex >= 0) {
+          this.onResultSelect(this.results[this.activeIndex]);
+        }
+        break;
+
+      case 'Escape':
+        event.preventDefault();
+        this.isDropdownOpen = false;
+        this.activeIndex = -1;
+        break;
+    }
+  };
+
+  private onResultSelect(result: SearchNowResult) {
+    this.query = result.title;
+    this.isDropdownOpen = false;
+    this.activeIndex = -1;
+
+    console.log('Selected result:', result);
   }
 
   render() {
@@ -96,6 +151,12 @@ export class SearchNow {
             value={this.query}
             placeholder={this.config.placeholder}
             onInput={this.onChange}
+            onKeyDown={this.onKeyDown}
+            onFocus={() => (this.isDropdownOpen = true)}
+            role="combobox"
+            aria-autocomplete="list"
+            aria-expanded={this.isDropdownOpen ? 'true' : 'false'}
+            aria-controls={this.dropdownId}
           />
 
           {hasQuery && (
@@ -104,6 +165,22 @@ export class SearchNow {
             </button>
           )}
         </div>
+        {this.config.filters && this.config.filters.length > 0 && (
+          <div class="filters">
+            {this.config.filters.map((filter) => (
+              <button
+                type="button"
+                class={{
+                  'filter-button': true,
+                  active: this.selectedFilter === filter.value,
+                }}
+                onClick={() => this.onFilterClick(filter.value)}
+              >
+                {filter.label}
+              </button>
+            ))}
+          </div>
+        )}
 
         {!canSearch && hasQuery && (
           <p class="pre-condition">Type at least {MIN_QUERY_LENGTH} characters</p>
@@ -117,31 +194,22 @@ export class SearchNow {
           <p class="no-results">No results found</p>
         )}
 
-        {!this.loading && this.results.length > 0 && (
-          <ul>
-            {this.results.map((result) => (
-              <li key={result.id} class="result-item">
-                <button type="button" class="result-button">
-                  <div class="result-row">
-                    <span class="result-label">{this.config.labels.titleLabel}:</span>
-                    <span class="result-value">{this.highlightText(result.title)}</span>
-                  </div>
-
-                  {result.subtitle && this.config.labels.subtitleLabel && (
-                    <div class="result-row">
-                      <span class="result-label">{this.config.labels.subtitleLabel}:</span>
-                      <span class="result-value">{this.highlightText(result.subtitle)}</span>
-                    </div>
-                  )}
-
-                  {result.description && this.config.labels.descriptionLabel && (
-                    <div class="result-row">
-                      <span class="result-label">{this.config.labels.descriptionLabel}:</span>
-                      <span class="result-value">{this.highlightText(result.description)}</span>
-                    </div>
-                  )}
-                </button>
-              </li>
+        {this.isDropdownOpen && !this.loading && this.results.length > 0 && (
+          <ul
+            id={this.dropdownId}
+            class="results-dropdown"
+            role="listbox"
+          >
+            {this.results.map((result, index) => (
+              <search-result
+                key={result.id}
+                optionId={`search-result-${result.id}`}
+                result={result}
+                labels={this.config.labels}
+                query={this.query}
+                active={this.activeIndex === index}
+                onClick={() => this.onResultSelect(result)}
+              ></search-result>
             ))}
           </ul>
         )}
