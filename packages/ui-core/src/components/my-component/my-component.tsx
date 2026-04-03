@@ -1,4 +1,5 @@
 import { Component, h } from '@stencil/core';
+import { customerSearchConfig } from '../../config/customer-search-config';
 
 @Component({
   tag: 'my-component',
@@ -16,7 +17,9 @@ export class MyComponent {
       //   message="Hello from ui-core"
       //   onButtonClicked={this.handleButtonClicked}
       // ></hello-world>
-      <search-now></search-now>
+      <div>
+        <search-now config={customerSearchConfig}></search-now>
+      </div>
     );
   }
 }
