@@ -2,13 +2,18 @@ import type { SearchNowConfig, SearchNowResult } from '../types/search';
 
 export async function fetchSearchResults(
   config: SearchNowConfig,
-  query: string
+  query: string,
+  selectedFilter?: string
 ): Promise<SearchNowResult[]> {
   const method = config.api.method ?? 'GET';
-
   const url = new URL(config.api.searchUrl, window.location.origin);
 
+
   url.searchParams.set(`${config.mapping.titleField}:contains`, query);
+
+  if (selectedFilter && selectedFilter !== 'all' && config.api.filterParam) {
+    url.searchParams.set(config.api.filterParam, selectedFilter);
+  }
 
   const response = await fetch(url.toString(), { method });
 

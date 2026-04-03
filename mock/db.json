@@ -4,13 +4,71 @@
       "customerId": "C001",
       "fullName": "John Tan",
       "cif": "CIF10001",
-      "email": "john.tan@email.com"
+      "email": "john.tan@email.com",
+      "segment": "retail"
     },
     {
       "customerId": "C002",
       "fullName": "Jane Lee",
       "cif": "CIF10002",
-      "email": "jane.lee@email.com"
+      "email": "jane.lee@email.com",
+      "segment": "corporate"
+    },
+    {
+      "customerId": "C003",
+      "fullName": "Michael Lim",
+      "cif": "CIF10003",
+      "email": "michael.lim@email.com",
+      "segment": "retail"
+    },
+    {
+      "customerId": "C004",
+      "fullName": "Sarah Wong",
+      "cif": "CIF10004",
+      "email": "sarah.wong@email.com",
+      "segment": "retail"
+    },
+    {
+      "customerId": "C005",
+      "fullName": "David Ng",
+      "cif": "CIF10005",
+      "email": "david.ng@email.com",
+      "segment": "corporate"
+    },
+    {
+      "customerId": "C006",
+      "fullName": "Emily Tan",
+      "cif": "CIF10006",
+      "email": "emily.tan@email.com",
+      "segment": "corporate"
+    },
+    {
+      "customerId": "C007",
+      "fullName": "Kevin Goh",
+      "cif": "CIF10007",
+      "email": "kevin.goh@email.com",
+      "segment": "corporate"
+    },
+    {
+      "customerId": "C008",
+      "fullName": "Rachel Chua",
+      "cif": "CIF10008",
+      "email": "rachel.chua@email.com",
+      "segment": "retail"
+    },
+    {
+      "customerId": "C009",
+      "fullName": "Benjamin Yeo",
+      "cif": "CIF10009",
+      "email": "benjamin.yeo@email.com",
+      "segment": "corporate"
+    },
+    {
+      "customerId": "C010",
+      "fullName": "Olivia Koh",
+      "cif": "CIF10010",
+      "email": "olivia.koh@email.com",
+      "segment": "retail"
     }
   ]
 }

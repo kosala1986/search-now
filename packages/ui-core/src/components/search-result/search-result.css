@@ -1,0 +1,58 @@
+@import '../search-now/theme-tokens.css';
+
+:host {
+  display: block;
+}
+
+.result-item {
+  margin-bottom: var(--sn-space-5);
+  list-style: none;
+}
+
+.result-button {
+  width: 100%;
+  padding: var(--sn-space-7);
+  border: 1px solid var(--sn-color-border-soft);
+  border-radius: var(--sn-radius-lg);
+  background: var(--sn-color-surface);
+  text-align: left;
+  cursor: pointer;
+}
+
+.result-button:hover {
+  background: var(--sn-color-surface-hover);
+  border-color: var(--sn-color-border-hover);
+}
+
+.result-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sn-space-3);
+  margin-bottom: var(--sn-space-4);
+}
+
+.result-row:last-child {
+  margin-bottom: 0;
+}
+
+.result-label {
+  min-width: var(--sn-label-width);
+  font-weight: var(--sn-font-weight-semibold);
+  color: var(--sn-color-text-muted);
+}
+
+.result-value {
+  color: var(--sn-color-text);
+  word-break: break-word;
+}
+
+mark {
+  background: var(--sn-color-highlight);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.result-button.active {
+  background: var(--sn-color-surface-hover);
+  border-color: var(--sn-color-border-hover);
+}

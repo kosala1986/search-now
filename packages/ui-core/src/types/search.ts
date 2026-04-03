@@ -28,6 +28,7 @@ export interface SearchApiConfig {
   searchUrl: string;
   method?: 'GET' | 'POST';
   queryParam?: string;
+  filterParam?: string;
 }
 
 export interface SearchNowConfig {
