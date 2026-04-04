@@ -1,9 +1,9 @@
 import { describe, expect, h, it, render } from '@stencil/vitest';
-import { SearchContext, type SearchNowConfig } from '../../types/search';
+import { type SearchNowConfig } from '../../types/search';
 
 describe('search-now', () => {
     const config: SearchNowConfig = {
-        context: SearchContext.Customers,
+        context: 'customers',
         title: 'Search Customers',
         placeholder: 'Search by customer name',
         filters: [
@@ -33,7 +33,7 @@ describe('search-now', () => {
         const { root } = await render(<search-now config={config}></search-now>);
 
         const shadow = root.shadowRoot!;
-        
+
         expect(shadow.querySelector('h2')?.textContent).toBe('Search Customers');
         expect(shadow.querySelector('input')?.getAttribute('placeholder')).toBe(
             'Search by customer name'

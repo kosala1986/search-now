@@ -1,7 +1,7 @@
-import { SearchContext, type SearchNowConfig } from '../types/search';
+import { type SearchNowConfig } from '../types/search';
 
 export const accountSearchConfig: SearchNowConfig = {
-    context: SearchContext.Accounts,
+    context: 'accounts',
     title: 'Search Accounts',
     buttonLabel: 'Clear',
     placeholder: 'Search by account name',

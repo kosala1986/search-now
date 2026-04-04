@@ -135,8 +135,7 @@ export class SearchNow {
     this.query = result.title;
     this.isDropdownOpen = false;
     this.activeIndex = -1;
-
-    console.log('Selected result:', result);
+    
     this.resultSelect.emit(result);
   }
 

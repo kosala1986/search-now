@@ -1,15 +1,18 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HelloWorld } from '../../../../packages/angular-wrapper/src/directives/proxies';
+import { SearchNow } from '../../../../packages/angular-wrapper/src/directives/proxies';
+import { accountSearchConfig } from './account-search-config';
 
 @Component({
   selector: 'app-root',
-  imports: [HelloWorld],
+  imports: [SearchNow],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  onButtonClicked(event: CustomEvent<string>) {
+  readonly accountSearchConfig = accountSearchConfig;
+
+  onResultSelect(event: CustomEvent) {
     console.log('Angular received:', event.detail);
   }
 }

@@ -1,10 +1,13 @@
-import { type SearchNowConfig } from '../types/search';
+import type { ComponentProps } from 'react';
+import { SearchNow } from '@search-now/react-wrapper';
+
+type SearchNowConfig = ComponentProps<typeof SearchNow>['config'];
 
 export const customerSearchConfig: SearchNowConfig = {
   context: 'customers',
   title: 'Search Customers',
-  buttonLabel: 'Clear',
   placeholder: 'Search by customer name',
+  buttonLabel: 'Clear',
   filters: [
     { id: 'all', label: 'All', value: 'all', isDefault: true },
     { id: 'retail', label: 'Retail', value: 'retail' },
