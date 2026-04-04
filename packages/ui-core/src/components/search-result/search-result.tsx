@@ -42,23 +42,23 @@ export class SearchResult {
               active: this.active,
             }}
           >
-            <div class="result-row">
+            <section class="result-row">
               <span class="result-label">{this.labels.titleLabel}:</span>
               <span class="result-value">{this.highlightText(this.result.title)}</span>
-            </div>
+            </section>
 
             {this.result.subtitle && this.labels.subtitleLabel && (
-              <div class="result-row">
+              <section class="result-row">
                 <span class="result-label">{this.labels.subtitleLabel}:</span>
                 <span class="result-value">{this.highlightText(this.result.subtitle)}</span>
-              </div>
+              </section>
             )}
 
             {this.result.description && this.labels.descriptionLabel && (
-              <div class="result-row">
+              <section class="result-row">
                 <span class="result-label">{this.labels.descriptionLabel}:</span>
                 <span class="result-value">{this.highlightText(this.result.description)}</span>
-              </div>
+              </section>
             )}
           </button>
         </li>

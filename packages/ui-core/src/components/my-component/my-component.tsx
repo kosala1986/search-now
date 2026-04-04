@@ -1,5 +1,6 @@
 import { Component, h } from '@stencil/core';
-import { customerSearchConfig } from '../../config/customer-search-config';
+// import { customerSearchConfig} from '../../config/customer-search-config';
+import { accountSearchConfig } from '../../config/account-search-config';
 
 @Component({
   tag: 'my-component',
@@ -18,7 +19,7 @@ export class MyComponent {
       //   onButtonClicked={this.handleButtonClicked}
       // ></hello-world>
       <div>
-        <search-now config={customerSearchConfig}></search-now>
+        <search-now config={accountSearchConfig}></search-now>
       </div>
     );
   }

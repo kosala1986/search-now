@@ -3,6 +3,7 @@ import { SearchContext, type SearchNowConfig } from '../types/search';
 export const customerSearchConfig: SearchNowConfig = {
   context: SearchContext.Customers,
   title: 'Search Customers',
+  buttonLabel: 'Clear',
   placeholder: 'Search by customer name',
   filters: [
     { id: 'all', label: 'All', value: 'all', isDefault: true },

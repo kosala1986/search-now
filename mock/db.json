@@ -70,5 +70,127 @@
       "email": "olivia.koh@email.com",
       "segment": "retail"
     }
+  ],
+  "accounts": [
+    {
+      "accountId": "A001",
+      "accountName": "Primary Savings",
+      "accountNumber": "123-456-789",
+      "status": "Active",
+      "accountType": "savings",
+      "segment": "retail"
+    },
+    {
+      "accountId": "A002",
+      "accountName": "Daily Current",
+      "accountNumber": "222-333-444",
+      "status": "Active",
+      "accountType": "current",
+      "segment": "retail"
+    },
+    {
+      "accountId": "A003",
+      "accountName": "Fixed Deposit Plus",
+      "accountNumber": "555-666-777",
+      "status": "Matured",
+      "accountType": "fixed-deposit",
+      "segment": "retail"
+    },
+    {
+      "accountId": "A004",
+      "accountName": "Family Savings",
+      "accountNumber": "888-999-000",
+      "status": "Dormant",
+      "accountType": "savings",
+      "segment": "retail"
+    },
+    {
+      "accountId": "A005",
+      "accountName": "Business Current",
+      "accountNumber": "111-222-333",
+      "status": "Dormant",
+      "accountType": "current",
+      "segment": "corporate"
+    },
+    {
+      "accountId": "A006",
+      "accountName": "Travel Savings",
+      "accountNumber": "444-555-666",
+      "status": "Active",
+      "accountType": "savings",
+      "segment": "retail"
+    },
+    {
+      "accountId": "A007",
+      "accountName": "Premium Savings",
+      "accountNumber": "777-888-999",
+      "status": "Active",
+      "accountType": "savings",
+      "segment": "retail"
+    },
+    {
+      "accountId": "A008",
+      "accountName": "Corporate Current",
+      "accountNumber": "101-202-303",
+      "status": "Active",
+      "accountType": "current",
+      "segment": "corporate"
+    },
+    {
+      "accountId": "A009",
+      "accountName": "Business Reserve",
+      "accountNumber": "404-505-606",
+      "status": "Frozen",
+      "accountType": "current",
+      "segment": "corporate"
+    },
+    {
+      "accountId": "A010",
+      "accountName": "Secure Fixed Deposit",
+      "accountNumber": "707-808-909",
+      "status": "Active",
+      "accountType": "fixed-deposit",
+      "segment": "retail"
+    },
+    {
+      "accountId": "A011",
+      "accountName": "Growth Deposit",
+      "accountNumber": "212-323-434",
+      "status": "Matured",
+      "accountType": "fixed-deposit",
+      "segment": "corporate"
+    },
+    {
+      "accountId": "A012",
+      "accountName": "Student Savings",
+      "accountNumber": "545-656-767",
+      "status": "Active",
+      "accountType": "savings",
+      "segment": "retail"
+    },
+    {
+      "accountId": "A013",
+      "accountName": "Payroll Current",
+      "accountNumber": "818-929-030",
+      "status": "Active",
+      "accountType": "current",
+      "segment": "corporate"
+    },
+    {
+      "accountId": "A014",
+      "accountName": "Long Term Deposit",
+      "accountNumber": "141-252-363",
+      "status": "Locked",
+      "accountType": "fixed-deposit",
+      "segment": "corporate"
+    },
+    {
+      "accountId": "A015",
+      "accountName": "Holiday Savings",
+      "accountNumber": "474-585-696",
+      "status": "Active",
+      "accountType": "savings",
+      "segment": "retail"
+    }
   ]
 }
