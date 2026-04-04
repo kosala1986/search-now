@@ -1,6 +1,11 @@
 import { SearchNow } from '@search-now/react-wrapper';
+import { customerSearchConfig } from './customer-search-config';
 
 function App() {
+  const handleResultSelect = (event: CustomEvent) => {
+    console.log('Selected search result in react app:', event.detail);
+  };
+
   return (
     <div>
       <header>
@@ -8,9 +13,12 @@ function App() {
         <p>Stencil Web Components with React Integration</p>
       </header>
       <main>
-        <SearchNow />
+        <SearchNow
+          config={customerSearchConfig}
+          onResultSelect={handleResultSelect}
+        />
       </main>
-      <footer>
+      <footer style={{ marginTop: '2rem', textAlign: 'center', position: 'absolute', bottom: 0 }}>
         <p>Kosala Yapa</p>
       </footer>
     </div>

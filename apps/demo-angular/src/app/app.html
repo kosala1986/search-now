@@ -1,4 +1,4 @@
 <div>
   <h1>Search Now - Angular Demo</h1>
-  <hello-world message="Hello from Angular" (buttonClicked)="onButtonClicked($event)"></hello-world>
+  <search-now [config]="accountSearchConfig" (resultSelect)="onResultSelect($event)"></search-now>
 </div>

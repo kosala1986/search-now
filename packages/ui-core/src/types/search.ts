@@ -1,9 +1,3 @@
-export enum SearchContext {
-  Customers = 'customers',
-  Accounts = 'accounts',
-  Transactions = 'transactions',
-}
-
 export interface SearchFilterConfig {
   id: string;
   label: string;
@@ -32,7 +26,7 @@ export interface SearchApiConfig {
 }
 
 export interface SearchNowConfig {
-  context: SearchContext;
+  context: string;
   title: string;
   placeholder: string;
   buttonLabel?: string;
