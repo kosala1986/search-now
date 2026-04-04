@@ -11,6 +11,11 @@
   --sn-color-border-hover: #cbd5e1;
   --sn-color-highlight: #fde68a;
   --sn-color-error: #b91c1c;
+  --sn-color-result-surface: #ffffff;
+  --sn-color-result-surface-hover: #f8fafc;
+  --sn-color-result-border: #e5e7eb;
+  --sn-color-result-label: #374151;
+  --sn-color-result-text: #111827;
 
   /* Typography */
   --sn-font-family: Arial, sans-serif;
