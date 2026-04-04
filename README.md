@@ -46,9 +46,14 @@ A monorepo project featuring web components built with Stencil, along with React
 
 ## Development
 
-- Use `npm run build` in each package to build
-- Use `npm run test` to run tests
-- Use `npm run start` in apps to start development servers
+- The web components in `packages/ui-core` can be built, tested, and run using the following commands:
+
+```bash
+cd packages/ui-core
+npm run build
+npm run test
+npm run start
+```
 
 ### Running Components Separately
 

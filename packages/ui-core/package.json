@@ -50,9 +50,13 @@
     "@stencil/angular-output-target": "^1.3.0",
     "@stencil/core": "^4.27.1",
     "@stencil/react-output-target": "^1.4.2",
-    "@stencil/vitest": "^1.8.3",
+    "@stencil/vitest": "^1.10.0",
     "@types/node": "^22.13.5",
-    "vitest": "^4.0.0"
+    "jest": "^30.2.0",
+    "jest-config": "^30.2.0",
+    "jest-environment-node": "^30.2.0",
+    "jest-runner": "^30.2.0",
+    "vitest": "^4.1.2"
   },
   "license": "MIT"
 }
