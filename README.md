@@ -10,7 +10,7 @@ A monorepo project featuring web components built with Stencil, along with React
 
 ## Getting Started
 
-1. Install dependencies:
+1. Install root npm dependencies:
    ```bash
    npm install
    ```
@@ -23,10 +23,12 @@ A monorepo project featuring web components built with Stencil, along with React
 
    Important: whenever you make changes in `packages/ui-core` web components, run this build step again before testing in `demo-react` or `demo-angular`.
 
-3. Start the mock server (from the root folder):
+3. Open a new terminal and start the mock server (from the root folder):
    ```bash
    npm run mock:server
    ```
+
+   Mock data can be found in `mock/db.json`.
 
    This starts a JSON server on http://localhost:3001/ with sample data.
 
@@ -41,6 +43,8 @@ A monorepo project featuring web components built with Stencil, along with React
    ```bash
    npm run start --workspace=demo-angular
    ```
+
+   **Theme test changes are added to the Angular demo app for testing light and dark theme.**
 
    The Angular app will be available at http://localhost:4200/
 
@@ -70,15 +74,23 @@ This starts the Stencil development server at http://localhost:3333/
 
 ### In React Applications
 
-Import and use the web components through the React wrapper:
+Import and use the web components through the React wrapper with a config object:
 
 ```tsx
 import { SearchNow } from '@search-now/react-wrapper';
+import { customerSearchConfig } from './customer-search-config';
 
 function App() {
+  const handleResultSelect = (event: CustomEvent) => {
+    console.log('Selected search result in react app:', event.detail);
+  };
+
   return (
     <div>
-      <SearchNow />
+      <SearchNow
+        config={customerSearchConfig}
+        onResultSelect={handleResultSelect}
+      />
     </div>
   );
 }
