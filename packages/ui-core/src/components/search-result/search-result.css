@@ -1,4 +1,4 @@
-@import '../search-now/theme-tokens.css';
+@import '../../styles/theme-tokens.css';
 
 :host {
   display: block;

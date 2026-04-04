@@ -1,6 +1,7 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State, Event, EventEmitter } from '@stencil/core';
 import type { SearchNowConfig, SearchNowResult } from '../../types/search';
 import { fetchSearchResults } from '../../services/search-api.service';
+import { SEARCH_NOW_MESSAGES } from './search-now.constants';
 
 const MIN_QUERY_LENGTH = 2;
 const DEBOUNCE_MS = 300;
@@ -20,8 +21,9 @@ export class SearchNow {
   @State() selectedFilter = '';
   @State() isDropdownOpen = false;
   @State() activeIndex = -1;
+  @Event() resultSelect!: EventEmitter<SearchNowResult>;
 
-  private dropdownId = 'search-now-results';
+  dropdownId = 'search-now-results';
 
   debounceTimer?: number;
 
@@ -30,7 +32,7 @@ export class SearchNow {
     this.selectedFilter = defaultFilter?.value ?? '';
   }
 
-  private onChange = (event: Event) => {
+  onChange = (event: Event) => {
     const input = event.target as HTMLInputElement;
     this.query = input.value;
     this.error = '';
@@ -55,7 +57,7 @@ export class SearchNow {
     }, DEBOUNCE_MS);
   };
 
-  private async loadResults() {
+  async loadResults() {
     try {
       const trimmedQuery = this.query.trim();
 
@@ -72,13 +74,13 @@ export class SearchNow {
       );
     } catch (error) {
       this.results = [];
-      this.error = 'Failed to load search results';
+      this.error = SEARCH_NOW_MESSAGES.loadError;
     } finally {
       this.loading = false;
     }
   }
 
-  private onFilterClick = async (filterValue: string) => {
+  onFilterClick = async (filterValue: string) => {
     this.selectedFilter = filterValue;
 
     if (this.query.trim().length >= MIN_QUERY_LENGTH) {
@@ -87,7 +89,7 @@ export class SearchNow {
     }
   };
 
-  private clearSearch = () => {
+  clearSearch = () => {
     this.query = '';
     this.results = [];
     this.error = '';
@@ -129,12 +131,13 @@ export class SearchNow {
     }
   };
 
-  private onResultSelect(result: SearchNowResult) {
+  onResultSelect(result: SearchNowResult) {
     this.query = result.title;
     this.isDropdownOpen = false;
     this.activeIndex = -1;
 
     console.log('Selected result:', result);
+    this.resultSelect.emit(result);
   }
 
   render() {
@@ -142,7 +145,7 @@ export class SearchNow {
     const canSearch = this.query.trim().length >= MIN_QUERY_LENGTH;
 
     return (
-      <div class="search-now">
+      <section class="search-now">
         <h2>{this.config.title}</h2>
 
         <div class="search-box">
@@ -161,12 +164,12 @@ export class SearchNow {
 
           {hasQuery && (
             <button type="button" onClick={this.clearSearch}>
-              Clear
+              {this.config.buttonLabel || SEARCH_NOW_MESSAGES.clearButton}
             </button>
           )}
         </div>
         {this.config.filters && this.config.filters.length > 0 && (
-          <div class="filters">
+          <section class="filters">
             {this.config.filters.map((filter) => (
               <button
                 type="button"
@@ -179,19 +182,19 @@ export class SearchNow {
                 {filter.label}
               </button>
             ))}
-          </div>
+          </section>
         )}
 
         {!canSearch && hasQuery && (
           <p class="pre-condition">Type at least {MIN_QUERY_LENGTH} characters</p>
         )}
 
-        {this.loading && <p class="loading">Loading...</p>}
+        {this.loading && <p class="loading">{SEARCH_NOW_MESSAGES.loading}</p>}
 
         {!this.loading && this.error && <p class="error">{this.error}</p>}
 
         {!this.loading && canSearch && !this.error && this.results.length === 0 && (
-          <p class="no-results">No results found</p>
+          <p class="no-results">{SEARCH_NOW_MESSAGES.noResults}</p>
         )}
 
         {this.isDropdownOpen && !this.loading && this.results.length > 0 && (
@@ -213,7 +216,7 @@ export class SearchNow {
             ))}
           </ul>
         )}
-      </div>
+      </section>
     );
   }
 }

@@ -35,6 +35,7 @@ export interface SearchNowConfig {
   context: SearchContext;
   title: string;
   placeholder: string;
+  buttonLabel?: string;
   filters?: SearchFilterConfig[];
   api: SearchApiConfig;
   mapping: SearchResultMappingConfig;
