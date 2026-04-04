@@ -9,15 +9,17 @@ export const accountSearchConfig: SearchNowConfig = {
   buttonLabel: 'Clear',
   filters: [
     { id: 'all', label: 'All', value: 'all', isDefault: true },
-    { id: 'savings', label: 'Savings', value: 'savings' },
-    { id: 'current', label: 'Current', value: 'current' },
-    { id: 'fixed-deposit', label: 'Fixed Deposit', value: 'fixed-deposit' },
+    { id: 'active', label: 'Active', value: 'Active' },
+    { id: 'dormant', label: 'Dormant', value: 'Dormant' },
+    { id: 'frozen', label: 'Frozen', value: 'Frozen' },
+    { id: 'matured', label: 'Matured', value: 'Matured' },
+    { id: 'locked', label: 'Locked', value: 'Locked' },
   ],
   api: {
     searchUrl: 'http://localhost:3001/accounts',
     method: 'GET',
     queryParam: 'q',
-    filterParam: 'accountType',
+    filterParam: 'status',
   },
   mapping: {
     idField: 'accountId',

@@ -1,4 +1,4 @@
-import { Component, h, Prop, State, Event, EventEmitter } from '@stencil/core';
+import { Component, h, Prop, State, Event, EventEmitter, forceUpdate } from '@stencil/core';
 import type { SearchNowConfig, SearchNowResult } from '../../types/search';
 import { fetchSearchResults } from '../../services/search-api.service';
 import { SEARCH_NOW_MESSAGES } from './search-now.constants';
@@ -27,9 +27,13 @@ export class SearchNow {
 
   debounceTimer?: number;
 
-  componentWillLoad() {
+  private getDefaultFilterValue() {
     const defaultFilter = this.config.filters?.find((filter) => filter.isDefault);
-    this.selectedFilter = defaultFilter?.value ?? '';
+    return defaultFilter?.value ?? '';
+  }
+
+  componentWillLoad() {
+    this.selectedFilter = this.getDefaultFilterValue();
   }
 
   onChange = (event: Event) => {
@@ -90,12 +94,14 @@ export class SearchNow {
   };
 
   clearSearch = () => {
+    this.selectedFilter = this.getDefaultFilterValue();
     this.query = '';
     this.results = [];
     this.error = '';
     this.loading = false;
     this.isDropdownOpen = false;
     this.activeIndex = -1;
+    forceUpdate(this);
   };
 
   private onKeyDown = (event: KeyboardEvent) => {

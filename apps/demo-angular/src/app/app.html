@@ -1,4 +1,33 @@
-<div>
-  <h1>Search Now - Angular Demo</h1>
-  <search-now [config]="accountSearchConfig" (resultSelect)="onResultSelect($event)"></search-now>
-</div>
+<section class="app-shell" [class.theme-light]="theme === 'light'" [class.theme-dark]="theme === 'dark'">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Angular Demo</p>
+    </div>
+
+    <div class="theme-switcher">
+      <button
+        type="button"
+        class="theme-button"
+        [class.active]="theme === 'light'"
+        (click)="setTheme('light')"
+      >
+        Light
+      </button>
+      <button
+        type="button"
+        class="theme-button"
+        [class.active]="theme === 'dark'"
+        (click)="setTheme('dark')"
+      >
+        Dark
+      </button>
+    </div>
+  </header>
+
+  <main class="demo-card">
+    <search-now
+      [config]="accountSearchConfig"
+      (resultSelect)="onResultSelect($event)"
+    ></search-now>
+  </main>
+</section>

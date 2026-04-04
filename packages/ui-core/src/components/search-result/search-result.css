@@ -12,15 +12,15 @@
 .result-button {
   width: 100%;
   padding: var(--sn-space-7);
-  border: 1px solid var(--sn-color-border-soft);
+  border: 1px solid var(--sn-color-result-border);
   border-radius: var(--sn-radius-lg);
-  background: var(--sn-color-surface);
+  background: var(--sn-color-result-surface);
   text-align: left;
   cursor: pointer;
 }
 
 .result-button:hover {
-  background: var(--sn-color-surface-hover);
+  background: var(--sn-color-result-surface-hover);
   border-color: var(--sn-color-border-hover);
 }
 
@@ -38,11 +38,11 @@
 .result-label {
   min-width: var(--sn-label-width);
   font-weight: var(--sn-font-weight-semibold);
-  color: var(--sn-color-text-muted);
+  color: var(--sn-color-result-label);
 }
 
 .result-value {
-  color: var(--sn-color-text);
+  color: var(--sn-color-result-text);
   word-break: break-word;
 }
 
@@ -53,6 +53,6 @@ mark {
 }
 
 .result-button.active {
-  background: var(--sn-color-surface-hover);
+  background: var(--sn-color-result-surface-hover);
   border-color: var(--sn-color-border-hover);
 }

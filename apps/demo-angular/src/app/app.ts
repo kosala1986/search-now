@@ -11,8 +11,13 @@ import { accountSearchConfig } from './account-search-config';
 })
 export class App {
   readonly accountSearchConfig = accountSearchConfig;
+  theme: 'light' | 'dark' = 'light';
 
   onResultSelect(event: CustomEvent) {
     console.log('Angular received:', event.detail);
+  }
+
+  setTheme(theme: 'light' | 'dark') {
+    this.theme = theme;
   }
 }
