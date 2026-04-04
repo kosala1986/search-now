@@ -98,30 +98,38 @@ function App() {
 
 ### In Angular Applications
 
-Import and use the web components through the Angular wrapper:
+Import and use the web components through the Angular wrapper with a config object:
 
 ```typescript
-import { HelloWorld } from '../../../../packages/angular-wrapper/src/directives/proxies';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { SearchNow } from '../../../../packages/angular-wrapper/src/directives/proxies';
+import { accountSearchConfig } from './account-search-config';
 
 @Component({
   selector: 'app-root',
-  imports: [HelloWorld],
+  imports: [SearchNow],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
-  onButtonClicked(event: CustomEvent<string>) {
+  readonly accountSearchConfig = accountSearchConfig;
+
+  onResultSelect(event: CustomEvent) {
     console.log('Angular received:', event.detail);
   }
 }
 ```
 
 ```html
-<div>
-  <hello-world
-    message="Hello from Angular"
-    (buttonClicked)="onButtonClicked($event)"
-  ></hello-world>
-</div>
+<search-now
+  [config]="accountSearchConfig"
+  (resultSelect)="onResultSelect($event)"
+></search-now>
 ```
+
+## Screenshots
+
+### Search Accounts
+
+![Search Accounts screenshot](./docs/search-accounts-screenshot.png)
