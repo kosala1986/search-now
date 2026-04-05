@@ -32,6 +32,13 @@ A monorepo project featuring web components built with Stencil, along with React
 
    This starts a JSON server on http://localhost:3001/ with sample data.
 
+   Available mock API endpoints:
+
+   - `GET /customers`
+     Returns customer data with fields such as `customerId`, `fullName`, `cif`, `email`, and `segment`.
+   - `GET /accounts`
+     Returns account data with fields such as `accountId`, `accountName`, `accountNumber`, `status`, `accountType`, and `segment`.
+
 4. Start the demo react app (from the root folder):
    ```bash
    npm run dev --workspace=demo-react
