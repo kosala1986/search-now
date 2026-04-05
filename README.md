@@ -124,8 +124,8 @@ export class App {
 ```html
 <search-now
   [config]="accountSearchConfig"
-  (resultSelect)="onResultSelect($event)"
-></search-now>
+  (resultSelect)="onResultSelect($event)">
+</search-now>
 ```
 
 ## Screenshots

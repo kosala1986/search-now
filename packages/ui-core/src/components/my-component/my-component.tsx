@@ -18,9 +18,12 @@ export class MyComponent {
       //   message="Hello from ui-core"
       //   onButtonClicked={this.handleButtonClicked}
       // ></hello-world>
-      <div>
-        <search-now config={accountSearchConfig}></search-now>
-      </div>
+      <>
+        <h1>Testing Stencil components</h1>
+        <div>
+          <search-now config={accountSearchConfig}></search-now>
+        </div>
+      </>
     );
   }
 }

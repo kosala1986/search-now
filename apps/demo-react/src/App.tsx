@@ -9,8 +9,8 @@ function App() {
   return (
     <div>
       <header>
-        <h1>Search Now Demo</h1>
-        <p>Stencil Web Components with React Integration</p>
+        <h1>Bank App 01</h1>
+        <p>React Demo</p>
       </header>
       <main>
         <SearchNow
